@@ -1,0 +1,25 @@
+.my-home img {
+  height: 220px;
+  object-fit: cover;
+  width: 60%;
+}
+.my-home div {
+  display: flex;
+  align-items: center;
+  background-color: #f8f8f8;
+  width: 500px;
+  margin: 0 auto;
+  gap: 20px;
+  margin-top: 50px;
+  border-top-left-radius: 20px;
+  overflow: hidden;
+  border-bottom-right-radius: 20px;
+}
+.my-home div:hover {
+  cursor: pointer;
+}
+.my-home div p {
+  font-size: 30px;
+  text-decoration: none;
+  color: gray;
+}

@@ -4,6 +4,8 @@ import Home from "../Pages/Home/Home";
 import Signup from "../Pages/Signup/Signup";
 import Header from "../Components/Header/Header";
 import MyHome from "../Pages/MyHome/MyHome";
+import Todo from "../Pages/Todo/todo";
+import Ideas from "../Pages/Ideas/ideas";
 import "./App.css";
 import { useState, useEffect } from "react";
 import Login from "../Pages/Login/Login";
@@ -51,6 +53,8 @@ function App() {
         <Route path="/signup" element={<Signup login={login} />} />
         <Route path="/login" element={<Login login={login} />} />
         <Route path="/home" element={<MyHome />} />
+        <Route path="/todo" element={<Todo />} />
+        <Route path="/ideas" element={<Ideas />} />
       </Routes>
     </>
   );

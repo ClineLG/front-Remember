@@ -1,0 +1,29 @@
+.toDo {
+  display: flex;
+  gap: 20px;
+}
+.pro {
+  background-color: aqua;
+  height: 300px;
+  flex: 1;
+  padding: 20px;
+}
+
+.perso {
+  background-color: burlywood;
+  height: 300px;
+  flex: 1;
+  padding: 20px;
+}
+.toDo form {
+  background-color: blueviolet;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 20px;
+}
+.row {
+  display: flex;
+  justify-content: space-around;
+}
