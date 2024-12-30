@@ -1,0 +1,33 @@
+.logo {
+  font-size: 70px;
+  color: #5c47d3;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-button {
+  background-color: #5c47d3df;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 40px;
+  border-radius: 55px;
+  color: white;
+  font-size: 20px;
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 20px 0;
+}
