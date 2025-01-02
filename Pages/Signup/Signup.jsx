@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./signup.css";
 import { GrDocumentUpload } from "react-icons/gr";
 import axios from "axios";
-import Cookies from "js-cookie";
 const Signup = ({ login }) => {
-  const navigate = useNavigate();
   const [userDetails, setUserDetails] = useState({
     username: "",
     email: "",
@@ -36,7 +34,6 @@ const Signup = ({ login }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(userDetails);
     const { username, email, password, confirmPassword, avatar } = userDetails;
     if (!username || !email || !password || !confirmPassword) {
       setErrorMessage("Veuillez remplir tous les champs");
