@@ -1,14 +1,20 @@
 import { GiBrain } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./header.css";
 import { BiLogOutCircle } from "react-icons/bi";
 
 const Header = ({ user, logout }) => {
+  const navigate = useNavigate();
   console.log(user);
   return (
     <header>
       <div className="container header">
-        <div className="logo-container">
+        <div
+          className="logo-container"
+          onClick={() => {
+            user ? navigate("/home") : navigate("/");
+          }}
+        >
           <GiBrain className="logo" />
           <h1>Remember</h1>
         </div>
