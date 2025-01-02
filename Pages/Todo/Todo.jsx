@@ -178,9 +178,7 @@ const Todo = () => {
           </div>
           <button>go !</button>
         </form>
-        <div>
-          <p>{counterDone} tâches réalisées !</p>
-        </div>
+        {counterDone !== 0 && <p>{counterDone} tâches réalisées !</p>}
         <div className="toDo">
           <div className="pro">
             <SortTask
