@@ -1,0 +1,14 @@
+.opacity {
+  opacity: 0.7;
+}
+.labelAvatar div {
+  display: flex;
+  gap: 20px;
+}
+.signup.update h1 {
+  font-size: 30px;
+}
+
+.signup.update form {
+  padding-bottom: 40px;
+}

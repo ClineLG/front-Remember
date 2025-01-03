@@ -2,27 +2,44 @@ import "./todo.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import SortTask from "../../Components/SortTask";
+import SortTask from "../../Components/SortTask/SortTask";
 const Todo = () => {
   const [task, setTask] = useState("");
   const [pro, setPro] = useState(false);
-  const [perso, setPerso] = useState(true);
+  const [perso, setPerso] = useState(false);
   const [emergency, setEmergency] = useState(false);
   const [dataPro, setDataPro] = useState(null);
   const [dataPerso, setDataPerso] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [submit, setSubmit] = useState(false);
   const [counterDone, setCounterDone] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
   const userToken = Cookies.get("token");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (!task) {
+      setErrorMessage("Veuillez entrer une tâche");
+      return;
+    }
+    let proToSend;
+    let persoToSend;
+    if (!pro && !perso) {
+      persoToSend = true;
+      proToSend = pro;
+    } else if (pro && perso) {
+      (persoToSend = true), (proToSend = false);
+    } else {
+      persoToSend = perso;
+      proToSend = pro;
+    }
+
     const response = await axios.put(
       `http://localhost:3002/user/addTask`,
       {
         task: task,
-        pro: pro,
-        perso: perso,
+        pro: proToSend,
+        perso: persoToSend,
         emergency: emergency,
       },
       {
@@ -32,6 +49,7 @@ const Todo = () => {
       }
     );
     setSubmit(!submit);
+    setTask("");
     console.log(response.data);
   };
   const handleDone = async (taskId) => {
@@ -131,53 +149,59 @@ const Todo = () => {
           <input
             type="text"
             name="task"
-            placeholder="nouvelle tâche"
+            placeholder="Une nouvelle tâche ?"
             onChange={(event) => {
               setTask(event.target.value);
+              setErrorMessage("");
             }}
             value={task}
           />
           <div className="row">
             <div>
-              <label htmlFor="pro">Pro</label>
-              <input
-                type="checkbox"
-                id="pro"
-                onChange={() => {
-                  setPro(!pro);
-                  setPerso(false);
-                }}
-              />
+              <div>
+                <input
+                  type="checkbox"
+                  id="pro"
+                  onChange={() => {
+                    setPro(!pro);
+                  }}
+                />
+                <label htmlFor="pro">Pro</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="Perso"
+                  onChange={() => {
+                    setPerso(!perso);
+                  }}
+                />
+                <label htmlFor="perso">Perso</label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="urgent"
+                  onChange={() => {
+                    setEmergency(!emergency);
+                  }}
+                />
+                <label htmlFor="urgent">Urgent</label>
+              </div>
             </div>
-            <div>
-              <label htmlFor="perso">Perso</label>
-              <input
-                type="checkbox"
-                id="Perso"
-                onChange={() => {
-                  setPerso(true);
-                  setPro(false);
-                }}
-              />
-            </div>
+
+            <button className="submit">Ajouter cette nouvelle tâche !</button>
           </div>
-          <div className="row">
-            <div>
-              <label htmlFor="urgent">urgent</label>
-              <input
-                type="checkbox"
-                id="urgent"
-                onChange={() => {
-                  setEmergency(!emergency);
-                }}
-              />
-            </div>
-          </div>
-          <button>go !</button>
+          {errorMessage && <p className="error">{errorMessage}</p>}
         </form>
-        {counterDone !== 0 && <p>{counterDone} tâches réalisées !</p>}
+      </div>
+      {counterDone !== 0 && (
+        <p className="taskCounter">Au total : {counterDone} tâches réalisées</p>
+      )}
+      <div className="container">
         <div className="toDo">
           <div className="pro">
+            <h1>Mes tâches pro</h1>
             <SortTask
               data={dataPro.emergency}
               handleDelete={handleDelete}
@@ -195,6 +219,7 @@ const Todo = () => {
             />
           </div>
           <div className="perso">
+            <h1>Mes tâches perso</h1>
             <SortTask
               data={dataPerso.emergency}
               handleDelete={handleDelete}

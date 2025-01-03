@@ -1,48 +1,90 @@
-.toDo {
-  display: flex;
-  gap: 20px;
-}
-.pro {
-  background-color: aqua;
-  height: 300px;
-  flex: 1;
-  padding: 20px;
-}
-
-.perso {
-  background-color: burlywood;
-  height: 300px;
-  flex: 1;
-  padding: 20px;
+.tasks {
+  margin-bottom: 100px;
 }
 .tasks form {
   width: 50%;
   margin: 20px auto;
-  background-color: blueviolet;
+  background-color: #f8f8f8;
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 20px;
+  padding: 40px 20px;
+  border-radius: 20px;
+  gap: 30px;
+}
+.tasks input {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  color: gray;
+}
+.tasks input:focus {
+  outline: none;
+}
+.tasks label {
+  font-size: 16px;
+  color: gray;
 }
 .row {
   display: flex;
-  justify-content: space-around;
 }
 
-.task {
+.row .submit {
+  flex: 1;
+  border-radius: 55px;
+  border: none;
+  margin-left: 40px;
+  background-color: #7260d8;
+  color: white;
+  font-size: 20px;
+}
+.tasks label:hover,
+.tasks input:hover {
+  cursor: pointer;
+}
+.submit:hover {
+  background-color: #5c47d39f;
+  cursor: pointer;
+}
+
+.taskCounter {
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  padding: 20px;
+  width: fit-content;
+  /* margin: 0 auto; */
+  margin-bottom: 20px;
+  margin-left: 40px;
+  color: gray;
+}
+.tasks form .error {
+  text-align: center;
+}
+.toDo {
   display: flex;
-  justify-content: space-between;
+  gap: 20px;
+  color: gray;
 }
-.checkbox {
-  height: 15px;
-  width: 15px;
-  background-color: white;
-  border-radius: 50%;
+.toDo h1 {
+  text-align: center;
+  font-size: 30px;
+  line-height: 50px;
+  border-bottom: solid 1px rgba(128, 128, 128, 0.337);
+  margin-bottom: 20px;
 }
-.checkbox.activ {
-  background-color: blueviolet;
+
+.pro {
+  background-color: #f8f8f8;
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
 }
-.activ-p {
-  text-decoration: line-through;
+
+.perso {
+  background-color: #f8f8f8;
+  flex: 1;
+  padding: 20px;
+  border-radius: 10px;
 }

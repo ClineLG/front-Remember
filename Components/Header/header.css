@@ -18,14 +18,26 @@
 }
 
 .login-button {
+  margin-right: 40px;
   background-color: #5c47d3df;
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 40px;
+  padding: 5px 20px;
   border-radius: 55px;
   color: white;
   font-size: 20px;
+}
+.login-button img {
+  height: 50px;
+  width: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.login-button:hover,
+.logo-container:hover {
+  cursor: pointer;
 }
 
 header {

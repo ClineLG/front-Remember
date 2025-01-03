@@ -1,0 +1,47 @@
+.tasklist {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.tasklist .row {
+  gap: 20px;
+}
+.notEm {
+  width: 17px;
+}
+.hot {
+  color: rgba(255, 166, 0, 0.551);
+}
+.tasklist .endLineT {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.endLineT span {
+  font-size: 10px;
+  align-self: center;
+}
+.checkbox {
+  height: 15px;
+  width: 15px;
+  background-color: rgba(191, 185, 185, 0.362);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox.activ {
+  background-color: #7260d8;
+}
+
+.checkbox:hover,
+.trash:hover {
+  cursor: pointer;
+}
+.activ-p {
+  text-decoration: line-through 2px;
+}

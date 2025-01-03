@@ -83,7 +83,7 @@ const Update = ({ user, login }) => {
   };
 
   return (
-    <section className="signup">
+    <section className="signup update">
       <div className="container">
         <form
           onSubmit={(event) => {
@@ -118,13 +118,19 @@ const Update = ({ user, login }) => {
           />
           <label htmlFor="uploadAvatar" className="labelAvatar">
             <div>
-              Ajouter un avatar <GrDocumentUpload />
+              Changer mon avatar <GrDocumentUpload />
             </div>
-            {imageUpload && (
+            {imageUpload ? (
               <img
                 src={imageUpload}
                 alt="picture upload preview"
                 className="avatarPreview"
+              />
+            ) : (
+              <img
+                src={user.avatar.secure_url}
+                alt="avatar preview"
+                className="avatarPreview opacity"
               />
             )}
           </label>

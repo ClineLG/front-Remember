@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
+import idea from "../../src/assets/imgs/idea.jpg";
 const Ideas = () => {
   const userToken = Cookies.get("token");
   const [isLoading, setIsLoading] = useState(true);
@@ -72,72 +73,98 @@ const Ideas = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    WhereIsThisText(search);
+
+    let searchToDo = search;
+    if (searchToDo.trim() === "") {
+      null;
+    } else {
+      WhereIsThisText(search);
+      setSearch("");
+    }
   };
 
   return isLoading ? (
     <div>Loading</div>
   ) : (
-    <section>
+    <section className="ideasSec">
+      <Link className="newIdea" to="/newIdea" state={{ userToken: userToken }}>
+        <img src={idea} alt="illustration idée" />
+        <p>Une Nouvelle Pensée à conserver ?</p>
+      </Link>
       <div className="container">
-        <Link to="/newIdea" state={{ userToken: userToken }}>
-          Une Nouvelle Pensée ?
-        </Link>
-        <div>
-          <h1>Toutes mes idées</h1>
+        <div className="allIdeas">
+          {/* <h1>Toutes mes pensées</h1> */}
           <form
             onSubmit={(event) => {
               handleSubmit(event);
             }}
           >
-            <input
-              type="text"
-              name="search"
-              onChange={(event) => {
-                setSearch(event.target.value);
-              }}
-            />
-            <button>Trouver</button>
-          </form>
+            <div>
+              <label htmlFor="search">
+                Chercher mes pensées par mots clés :
+              </label>
+              <input
+                id="search"
+                type="text"
+                name="search"
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
+                value={search ? search : ""}
+              />
+              {console.log("Search", search)}
+              <button className="submit-button">Trouver</button>
+            </div>
 
-          {seekIdea && (
-            <button
-              onClick={() => {
-                setSeekIdea(null);
-              }}
-            >
-              Retrouver toutes mes pensées
-            </button>
-          )}
+            {seekIdea && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSeekIdea(null);
+                }}
+                className="submit-button bis"
+              >
+                Retrouver toutes mes pensées
+              </button>
+            )}
+          </form>
           {seekIdea
             ? seekIdea.map((idea) => {
                 return (
-                  <div key={idea._id}>
+                  <div key={idea._id} className="idea">
+                    <FaTrashAlt
+                      className="trash"
+                      onClick={() => {
+                        handleDelete(idea._id);
+                      }}
+                    />
+
+                    {idea.title ? <h2>{idea.title}</h2> : <h2>Sans titre</h2>}
+                    {idea.image && <img src={idea.image.secure_url} />}
+                    {idea.think && <p>{idea.think}</p>}
                     <span>
                       créé le {idea.date.slice(8, 10)}/{idea.date.slice(5, 7)}/
                       {idea.date.slice(0, 4)}
                     </span>
-                    {idea.title && <h2>{idea.title}</h2>}
-                    {idea.image && <img src={idea.image.secure_url} />}{" "}
-                    {idea.think && <p>{idea.think}</p>}
                   </div>
                 );
               })
             : ideas.map((idea) => {
                 return (
-                  <div key={idea._id}>
-                    <span>
-                      créé le {idea.date.slice(8, 10)}/{idea.date.slice(5, 7)}/
-                      {idea.date.slice(0, 4)}
-                    </span>{" "}
+                  <div key={idea._id} className="idea">
                     <FaTrashAlt
+                      className="trash"
                       onClick={() => {
                         handleDelete(idea._id);
                       }}
                     />
-                    {idea.title && <h2>{idea.title}</h2>}
-                    {idea.image && <img src={idea.image.secure_url} />}{" "}
-                    {idea.think && <p>{idea.think}</p>}
+                    {idea.title ? <h2>{idea.title}</h2> : <h2>Sans titre</h2>}
+                    {idea.image && <img src={idea.image.secure_url} />}
+                    {idea.think && <p>{idea.think}</p>}{" "}
+                    <span>
+                      créé le {idea.date.slice(8, 10)}/{idea.date.slice(5, 7)}/
+                      {idea.date.slice(0, 4)}
+                    </span>
                   </div>
                 );
               })}

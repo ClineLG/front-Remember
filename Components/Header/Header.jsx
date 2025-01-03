@@ -28,18 +28,7 @@ const Header = ({ user, logout }) => {
                 navigate("/account");
               }}
             >
-              {user.avatar && (
-                <img
-                  src={user.avatar.secure_url}
-                  alt=""
-                  style={{
-                    height: "70px",
-                    width: "70px",
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                  }}
-                />
-              )}
+              {user.avatar && <img src={user.avatar.secure_url} alt="" />}
               <span>{user.username}</span>
             </div>
           </>

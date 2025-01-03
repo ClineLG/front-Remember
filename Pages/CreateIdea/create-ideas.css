@@ -1,0 +1,84 @@
+.create {
+  margin: 100px 0;
+}
+
+.create form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 0 auto;
+  align-items: center;
+  gap: 20px;
+  background-color: #f8f8f8;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.create form div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.create h1 {
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+.create input,
+.create textarea {
+  border: none;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  resize: none;
+  color: gray;
+}
+
+.create input:focus,
+.create textarea:focus {
+  outline: none;
+}
+.create input::placeholder,
+.create textarea::placeholder {
+  color: rgba(128, 128, 128, 0.521);
+}
+.create label {
+  color: gray;
+  align-self: center;
+}
+.create label:hover {
+  cursor: pointer;
+}
+.create .img-create {
+  background-color: white;
+  height: 150px;
+  width: 30%;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create .img-create div {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.create .preview {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.create .submit-button {
+  background-color: #7260d8;
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  width: 60%;
+}
+.create .submit-button:hover {
+  background-color: #5c47d39f;
+  cursor: pointer;
+}

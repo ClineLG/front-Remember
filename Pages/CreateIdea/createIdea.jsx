@@ -33,7 +33,9 @@ const CreateIdea = () => {
     event.preventDefault();
     const { think, image, title } = newIdea;
     if (!think && !image) {
-      setErrorMessage("Vous n'avez saisi ni texte ni uploadé d'image");
+      setErrorMessage(
+        "Vous n'avez pas saisi de texte et vous n'avez pas téléchargé d'image"
+      );
     } else {
       const formData = new FormData();
       formData.append("think", think);
@@ -66,56 +68,71 @@ const CreateIdea = () => {
   };
 
   return (
-    <div>
-      <form
-        onSubmit={(event) => {
-          handleSubmit(event);
-        }}
-      >
-        <h1> Une nouvelle idée ?</h1>
-        <input
-          type="text"
-          name="title"
-          onChange={(event) => {
-            const obj = { ...newIdea };
-            obj.title = event.target.value;
-            setNewIdea(obj);
+    <section className="create">
+      <div className="container">
+        <form
+          onSubmit={(event) => {
+            handleSubmit(event);
           }}
-        />
-        <textarea
-          type="text"
-          name="idea"
-          rows={5}
-          onChange={(event) => {
-            const obj = { ...newIdea };
-            obj.think = event.target.value;
-            setNewIdea(obj);
-          }}
-        />
-        <label htmlFor="img">
+        >
+          <h1>Ma nouvelle pensée</h1>
           <div>
-            Ajouter une image <GrDocumentUpload />
-          </div>
-          {imageUpload && (
-            <img
-              src={imageUpload}
-              alt="picture upload preview"
-              className="preview"
+            <label htmlFor="title">Titre :</label>
+            <input
+              id="title"
+              type="text"
+              name="title"
+              placeholder="Mon titre..."
+              onChange={(event) => {
+                const obj = { ...newIdea };
+                obj.title = event.target.value;
+                setNewIdea(obj);
+              }}
             />
-          )}
-        </label>
-        <input
-          className="inputImg"
-          id="img"
-          type="file"
-          name="image"
-          onChange={(event) => {
-            handleNewFile(event);
-          }}
-        />
-        <button disabled={isLoading ? true : false}>Go !</button>
-      </form>
-    </div>
+          </div>
+          <div>
+            <label htmlFor="idea">Ma pensée :</label>
+            <textarea
+              id="idea"
+              type="text"
+              name="idea"
+              placeholder="Ma pensée..."
+              rows={10}
+              onChange={(event) => {
+                const obj = { ...newIdea };
+                obj.think = event.target.value;
+                setNewIdea(obj);
+              }}
+            />
+          </div>
+          <label htmlFor="img" className="img-create">
+            <div>
+              Ajouter une image <GrDocumentUpload />
+            </div>
+            {imageUpload && (
+              <img
+                src={imageUpload}
+                alt="picture upload preview"
+                className="preview"
+              />
+            )}
+          </label>
+          <input
+            className="inputAvatar"
+            id="img"
+            type="file"
+            name="image"
+            onChange={(event) => {
+              handleNewFile(event);
+            }}
+          />
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          <button disabled={isLoading ? true : false} className="submit-button">
+            Enregistrer !
+          </button>
+        </form>
+      </div>
+    </section>
   );
 };
 

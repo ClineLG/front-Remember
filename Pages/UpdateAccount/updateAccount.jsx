@@ -21,30 +21,42 @@ const UpdateAccount = ({ user, logout }) => {
     }
   };
   return (
-    <section>
+    <section className="updateA">
       <div className="container">
-        <h1>Mon Compte</h1>
-        <div>
-          <p>{user.username}</p>
-          <p>{user.email}</p>
-          {user.avatar && <img src={user.avatar.secure_url} />}
-          <p>******</p>
+        <div className="update-container">
+          <h1>Mon Compte</h1>
+          <div className="updateA-div">
+            <span>Pseudo : </span>
+            <p>{user.username}</p>
+          </div>
+          <div className="updateA-div spe">
+            <span>adresse e-mail : </span>
+            <p>{user.email}</p>
+          </div>
+          <div className="updateA-div pad">
+            <span>Avatar :</span>
+            {user.avatar && <img src={user.avatar.secure_url} />}
+          </div>
+          <button
+            onClick={() => {
+              navigate("/update");
+            }}
+            className="submit-button"
+          >
+            Mettre à jour mes infos
+          </button>
+          <button onClick={() => logout()} className="submit-button">
+            Se déconnecter
+          </button>
+          <button
+            onClick={() => {
+              handleSubmit();
+            }}
+            className="submit-button red"
+          >
+            Supprimer ce compte
+          </button>
         </div>
-        <button
-          onClick={() => {
-            navigate("/update");
-          }}
-        >
-          Mettre à jour mes infos
-        </button>
-        <button onClick={() => logout()}>Se déconnecter</button>
-        <button
-          onClick={() => {
-            handleSubmit();
-          }}
-        >
-          Supprimer ce compte
-        </button>
       </div>
     </section>
   );
