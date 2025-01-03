@@ -2,8 +2,6 @@ import "./todo.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { FaTrashAlt } from "react-icons/fa";
-import { FaHotjar } from "react-icons/fa";
 import SortTask from "../../Components/SortTask";
 const Todo = () => {
   const [task, setTask] = useState("");
@@ -125,7 +123,6 @@ const Todo = () => {
   ) : (
     <section className="tasks">
       <div className="container">
-        {" "}
         <form
           onSubmit={(event) => {
             handleSubmit(event);

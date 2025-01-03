@@ -1,5 +1,5 @@
 import "./ideas.css";
-// import { GrDocumentUpload } from "react-icons/gr";
+import { FaTrashAlt } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -32,6 +32,22 @@ const Ideas = () => {
     };
     fetchData();
   }, [submit]);
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `http://localhost:3002/user/deleteThink/${id}`,
+        {
+          headers: {
+            Authorization: "Bearer " + userToken,
+          },
+        }
+      );
+      setSubmit(!submit);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const WhereIsThisText = (str) => {
     const newStr = str.toUpperCase();
@@ -113,7 +129,12 @@ const Ideas = () => {
                     <span>
                       créé le {idea.date.slice(8, 10)}/{idea.date.slice(5, 7)}/
                       {idea.date.slice(0, 4)}
-                    </span>
+                    </span>{" "}
+                    <FaTrashAlt
+                      onClick={() => {
+                        handleDelete(idea._id);
+                      }}
+                    />
                     {idea.title && <h2>{idea.title}</h2>}
                     {idea.image && <img src={idea.image.secure_url} />}{" "}
                     {idea.think && <p>{idea.think}</p>}

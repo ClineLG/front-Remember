@@ -1,7 +1,6 @@
 import { GiBrain } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
-import { BiLogOutCircle } from "react-icons/bi";
 
 const Header = ({ user, logout }) => {
   const navigate = useNavigate();
@@ -23,7 +22,6 @@ const Header = ({ user, logout }) => {
 
         {user && (
           <>
-            <BiLogOutCircle onClick={logout} />
             <div
               className="login-button"
               onClick={() => {
