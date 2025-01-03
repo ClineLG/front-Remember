@@ -8,6 +8,7 @@ import Todo from "../Pages/Todo/todo";
 import Ideas from "../Pages/Ideas/ideas";
 import CreateIdea from "../Pages/CreateIdea/createIdea";
 import UpdateAccount from "../Pages/UpdateAccount/updateAccount";
+import Update from "../Pages/Update/Update";
 import "./App.css";
 import { useState, useEffect } from "react";
 import Login from "../Pages/Login/Login";
@@ -58,7 +59,11 @@ function App() {
         <Route path="/todo" element={<Todo />} />
         <Route path="/ideas" element={<Ideas />} />
         <Route path="/newIdea" element={<CreateIdea />} />
-        <Route path="/account" element={<UpdateAccount />} />
+        <Route
+          path="/account"
+          element={<UpdateAccount user={user} logout={logout} />}
+        />
+        <Route path="/update" element={<Update user={user} login={login} />} />
       </Routes>
     </>
   );
