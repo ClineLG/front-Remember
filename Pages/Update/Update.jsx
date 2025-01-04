@@ -16,7 +16,6 @@ const Update = ({ user, login }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const handleImageUpload = (file) => {
-    console.log(userDetails.avatar);
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
@@ -68,13 +67,13 @@ const Update = ({ user, login }) => {
             "Content-Type": "multipart/form-data",
           }
         );
-        console.log(response.data);
         setIsLoading(false);
         login(response.data);
       } catch (error) {
-        console.log(error.response.data);
         if (error.response.data.message === "email already used") {
           setErrorMessage("Cet adresse email est déjà utilisée");
+        } else {
+          setErrorMessage("Une erreur est survenue veuillez recommencer");
         }
         setIsLoading(false);
       }

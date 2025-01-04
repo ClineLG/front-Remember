@@ -14,7 +14,6 @@ const UpdateAccount = ({ user, logout }) => {
           },
         }
       );
-      console.log(response);
       logout();
     } catch (error) {
       console.log(error);

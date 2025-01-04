@@ -23,7 +23,7 @@ const Ideas = () => {
             },
           }
         );
-        console.log(response.data);
+        // console.log(response.data);
         const tab = response.data.thinks.reverse();
         setIdeas(tab);
         setIsLoading(false);

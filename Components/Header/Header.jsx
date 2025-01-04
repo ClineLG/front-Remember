@@ -4,7 +4,7 @@ import "./header.css";
 
 const Header = ({ user }) => {
   const navigate = useNavigate();
-  console.log(user);
+  // console.log(user);
   return (
     <header>
       <div className="header">
