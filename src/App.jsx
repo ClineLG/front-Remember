@@ -6,7 +6,7 @@ import Header from "../Components/Header/Header";
 import Footer from "../Components/Footer/Footer";
 import MyHome from "../Pages/MyHome/MyHome";
 import Todo from "../Pages/Todo/Todo";
-import Ideas from "../Pages/Ideas/ideas";
+import Ideas from "../Pages/Ideas/Ideas";
 import CreateIdea from "../Pages/CreateIdea/createIdea";
 import UpdateAccount from "../Pages/UpdateAccount/updateAccount";
 import Update from "../Pages/Update/Update";
