@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import Signup from "../Pages/Signup/Signup";
 import Header from "../Components/Header/Header";
+import Footer from "../Components/Footer/Footer";
 import MyHome from "../Pages/MyHome/MyHome";
 import Todo from "../Pages/Todo/todo";
 import Ideas from "../Pages/Ideas/ideas";
@@ -65,6 +66,7 @@ function App() {
         />
         <Route path="/update" element={<Update user={user} login={login} />} />
       </Routes>
+      <Footer />
     </>
   );
 }

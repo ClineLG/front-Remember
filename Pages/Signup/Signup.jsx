@@ -49,7 +49,6 @@ const Signup = ({ login }) => {
       try {
         const response = await axios.post(
           "https://site--backend-remember--dm4qbjsg7dww.code.run/user/signup",
-          //   "http://localhost:3002/user/signup",
           formData,
           {
             "Content-Type": "multipart/form-data",
@@ -69,7 +68,7 @@ const Signup = ({ login }) => {
   };
 
   return (
-    <section className="signup">
+    <section className="signup sec">
       <div className="container">
         <form
           onSubmit={(event) => {

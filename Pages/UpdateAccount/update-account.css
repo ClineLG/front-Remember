@@ -1,5 +1,5 @@
 .updateA {
-  margin: 40px 0;
+  padding: 60px 0;
 }
 
 .update-container {
@@ -62,4 +62,37 @@
 .submit-button.red:hover {
   opacity: 1;
   background-color: rgba(180, 14, 14, 0.777);
+}
+
+@media (max-width: 1200px) {
+  .update-container {
+    width: 90%;
+  }
+}
+@media (max-width: 1000px) {
+  .updateA-div {
+    width: 90%;
+  }
+}
+@media (max-width: 500px) {
+  .updateA-div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .updateA-div span {
+    font-weight: 700;
+    width: 100%;
+  }
+  .update-container h1 {
+    font-size: 20px;
+  }
+  .updateA-div img {
+    margin: 0 auto;
+  }
+  .updateA .submit-button {
+    width: 70%;
+  }
 }

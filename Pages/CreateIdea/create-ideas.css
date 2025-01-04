@@ -1,5 +1,5 @@
 .create {
-  margin: 100px 0;
+  padding: 60px 0;
 }
 
 .create form {
@@ -81,4 +81,47 @@
 .create .submit-button:hover {
   background-color: #5c47d39f;
   cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .create form {
+    width: 90%;
+  }
+  .create .img-create {
+    width: 40%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 685px) {
+  .create label {
+    font-size: 13px;
+  }
+  .create .img-create div {
+    gap: 5px;
+  }
+}
+@media (max-width: 500px) {
+  .create form div:not(.notu) {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .create form label {
+    width: 100%;
+  }
+  .create form input,
+  .create form textarea {
+    width: 100%;
+  }
+  .create h1 {
+    font-size: 20px;
+  }
+  .notu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .create .img-create {
+    width: 80%;
+  }
 }

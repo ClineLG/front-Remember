@@ -7,7 +7,7 @@ const UpdateAccount = ({ user, logout }) => {
   const handleSubmit = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:3002/user/deleteUser",
+        "https://site--backend-remember--dm4qbjsg7dww.code.run/user/deleteUser",
         {
           headers: {
             Authorization: "Bearer " + user.token,
@@ -21,7 +21,7 @@ const UpdateAccount = ({ user, logout }) => {
     }
   };
   return (
-    <section className="updateA">
+    <section className="updateA sec">
       <div className="container">
         <div className="update-container">
           <h1>Mon Compte</h1>

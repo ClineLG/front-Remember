@@ -1,5 +1,13 @@
+.homes {
+  padding: 100px 0;
+}
+.my-home {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
 .my-home img {
-  height: 220px;
+  height: 240px;
   object-fit: cover;
   width: 60%;
 }
@@ -7,13 +15,12 @@
   display: flex;
   align-items: center;
   background-color: #f8f8f8;
-  width: 500px;
+  width: 60%;
   margin: 0 auto;
   gap: 20px;
-  margin-top: 50px;
-  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   overflow: hidden;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .my-home div:hover {
   cursor: pointer;
@@ -22,4 +29,26 @@
   font-size: 30px;
   text-decoration: none;
   color: gray;
+}
+
+@media (max-width: 1220px) {
+  .my-home div {
+    width: 90%;
+  }
+  .my-home div p {
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+@media (max-width: 500px) {
+  .my-home div {
+    flex-direction: column-reverse;
+  }
+  .my-home img {
+    width: 100%;
+  }
+  .my-home div p {
+    padding-top: 30px;
+  }
 }

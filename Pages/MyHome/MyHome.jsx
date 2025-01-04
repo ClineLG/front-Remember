@@ -7,7 +7,7 @@ const MyHome = () => {
   const navigate = useNavigate();
   useEffect(() => {}, []);
   return (
-    <section>
+    <section className="homes">
       <div className="container my-home">
         <div
           onClick={() => {
