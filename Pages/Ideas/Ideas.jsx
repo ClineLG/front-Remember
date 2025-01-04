@@ -16,7 +16,7 @@ const Ideas = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/user/allThoughts",
+          "https://site--backend-remember--dm4qbjsg7dww.code.run/user/allThoughts",
           {
             headers: {
               Authorization: "Bearer " + userToken,
@@ -37,7 +37,7 @@ const Ideas = () => {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3002/user/deleteThink/${id}`,
+        `https://site--backend-remember--dm4qbjsg7dww.code.run/user/deleteThink/${id}`,
         {
           headers: {
             Authorization: "Bearer " + userToken,
@@ -99,7 +99,7 @@ const Ideas = () => {
               handleSubmit(event);
             }}
           >
-            <div>
+            <div className="searchInput">
               <label htmlFor="search">
                 Chercher mes pensées par mots clés :
               </label>
@@ -112,21 +112,21 @@ const Ideas = () => {
                 }}
                 value={search ? search : ""}
               />
-              {console.log("Search", search)}
-              <button className="submit-button">Trouver</button>
             </div>
-
-            {seekIdea && (
-              <button
-                type="button"
-                onClick={() => {
-                  setSeekIdea(null);
-                }}
-                className="submit-button bis"
-              >
-                Retrouver toutes mes pensées
-              </button>
-            )}
+            <div className="buttonIdea">
+              <button className="submit-button">Trouver</button>
+              {seekIdea && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSeekIdea(null);
+                  }}
+                  className="submit-button bis"
+                >
+                  Retrouver toutes mes pensées
+                </button>
+              )}
+            </div>
           </form>
           {seekIdea
             ? seekIdea.map((idea) => {

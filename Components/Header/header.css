@@ -43,4 +43,35 @@
 header {
   background-color: #f8f8f8;
   padding: 20px 0;
+  position: sticky;
+  top: 0;
+  border-bottom: rgba(255, 255, 255, 0.659) solid 1px;
+  z-index: 1;
+}
+@media (max-width: 1400px) {
+  .logo-container {
+    padding-left: 20px;
+  }
+  .login-button {
+    margin-right: 20px;
+  }
+}
+@media (max-width: 500px) {
+  .logo-container h1 {
+    font-size: 20px;
+  }
+  .logo {
+    font-size: 40px;
+  }
+  .logo-container {
+    gap: 5px;
+  }
+
+  .login-button {
+    gap: 5px;
+    padding: 2px;
+  }
+  .login-button span {
+    display: none;
+  }
 }

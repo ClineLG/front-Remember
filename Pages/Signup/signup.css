@@ -1,5 +1,5 @@
 .signup {
-  padding-bottom: 50px;
+  padding: 50px 0;
 }
 .signup form {
   background-color: #f8f8f8;
@@ -7,7 +7,6 @@
   flex-direction: column;
   width: 50%;
   margin: 0 auto;
-  margin-top: 50px;
   padding: 20px;
   gap: 30px;
   align-items: center;
@@ -35,7 +34,7 @@
 
 .labelAvatar {
   background-color: white;
-  padding: 50px;
+  padding: 20px;
   border-radius: 25px;
   cursor: pointer;
   display: flex;
@@ -74,4 +73,26 @@
 }
 .error {
   color: rgb(218, 46, 46);
+}
+
+@media (max-width: 1220px) {
+  .signup form {
+    width: 90%;
+  }
+}
+@media (max-width: 550px) {
+  .labelAvatar div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 12px;
+    text-align: center;
+    width: 100%;
+  }
+  .signup button {
+    font-size: 15px;
+  }
+  .signup a {
+    text-align: center;
+  }
 }

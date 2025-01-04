@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 import SortTask from "../../Components/SortTask/SortTask";
+import { IoMdClose } from "react-icons/io";
+
 const Todo = () => {
   const [task, setTask] = useState("");
   const [pro, setPro] = useState(false);
@@ -14,6 +16,7 @@ const Todo = () => {
   const [submit, setSubmit] = useState(false);
   const [counterDone, setCounterDone] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
+  const [stickyTask, setStickyTask] = useState({ date: "", task: "" });
   const userToken = Cookies.get("token");
 
   const handleSubmit = async (event) => {
@@ -35,7 +38,7 @@ const Todo = () => {
     }
 
     const response = await axios.put(
-      `http://localhost:3002/user/addTask`,
+      `https://site--backend-remember--dm4qbjsg7dww.code.run/user/addTask`,
       {
         task: task,
         pro: proToSend,
@@ -55,7 +58,7 @@ const Todo = () => {
   const handleDone = async (taskId) => {
     try {
       const response = await axios.put(
-        "http://localhost:3002/user/taskDone",
+        "https://site--backend-remember--dm4qbjsg7dww.code.run/user/taskDone",
         { taskId: taskId },
         {
           headers: {
@@ -71,7 +74,7 @@ const Todo = () => {
   const handleDelete = async (taskId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3002/user/deleteTask/${taskId}`,
+        `https://site--backend-remember--dm4qbjsg7dww.code.run/user/deleteTask/${taskId}`,
         {
           headers: {
             Authorization: "Bearer " + userToken,
@@ -139,7 +142,7 @@ const Todo = () => {
   return isLoading ? (
     <div>isLoading</div>
   ) : (
-    <section className="tasks">
+    <section className="tasks sec">
       <div className="container">
         <form
           onSubmit={(event) => {
@@ -156,8 +159,8 @@ const Todo = () => {
             }}
             value={task}
           />
-          <div className="row">
-            <div>
+          <div className="row top">
+            <div className="cB-container">
               <div>
                 <input
                   type="checkbox"
@@ -190,7 +193,7 @@ const Todo = () => {
               </div>
             </div>
 
-            <button className="submit">Ajouter cette nouvelle tâche !</button>
+            <button className="submit">Ajouter !</button>
           </div>
           {errorMessage && <p className="error">{errorMessage}</p>}
         </form>
@@ -198,44 +201,62 @@ const Todo = () => {
       {counterDone !== 0 && (
         <p className="taskCounter">Au total : {counterDone} tâches réalisées</p>
       )}
-      <div className="container">
-        <div className="toDo">
-          <div className="pro">
-            <h1>Mes tâches pro</h1>
-            <SortTask
-              data={dataPro.emergency}
-              handleDelete={handleDelete}
-              handleDone={handleDone}
-            />
-            <SortTask
-              data={dataPro.todo}
-              handleDelete={handleDelete}
-              handleDone={handleDone}
-            />
-            <SortTask
-              data={dataPro.done}
-              handleDelete={handleDelete}
-              handleDone={handleDone}
-            />
+      {stickyTask && (
+        <div className="taskToShow">
+          <IoMdClose
+            className="close"
+            onClick={() => {
+              setStickyTask("");
+            }}
+          />
+          <div>
+            <p>Le {stickyTask.date} :</p>
+            <p className="taskP"> - {stickyTask.task}</p>
           </div>
-          <div className="perso">
-            <h1>Mes tâches perso</h1>
-            <SortTask
-              data={dataPerso.emergency}
-              handleDelete={handleDelete}
-              handleDone={handleDone}
-            />
-            <SortTask
-              data={dataPerso.todo}
-              handleDelete={handleDelete}
-              handleDone={handleDone}
-            />
-            <SortTask
-              data={dataPerso.done}
-              handleDelete={handleDelete}
-              handleDone={handleDone}
-            />
-          </div>
+        </div>
+      )}
+      <div className="container toDo">
+        <div className="pro">
+          <h1>Mes tâches pro</h1>
+          <SortTask
+            setStickyTask={setStickyTask}
+            data={dataPro.emergency}
+            handleDelete={handleDelete}
+            handleDone={handleDone}
+          />
+          <SortTask
+            setStickyTask={setStickyTask}
+            data={dataPro.todo}
+            handleDelete={handleDelete}
+            handleDone={handleDone}
+          />
+          <SortTask
+            setStickyTask={setStickyTask}
+            data={dataPro.done}
+            handleDelete={handleDelete}
+            handleDone={handleDone}
+          />
+        </div>
+        <div className="perso">
+          <h1>Mes tâches perso</h1>
+          <SortTask
+            setStickyTask={setStickyTask}
+            data={dataPerso.emergency}
+            handleDelete={handleDelete}
+            handleDone={handleDone}
+          />
+          <SortTask
+            setStickyTask={setStickyTask}
+            data={dataPerso.todo}
+            handleDelete={handleDelete}
+            handleDone={handleDone}
+          />
+          <SortTask
+            setStickyTask={setStickyTask}
+            data={dataPerso.done}
+            handleDelete={handleDelete}
+            handleDone={handleDone}
+          />
         </div>
       </div>
     </section>

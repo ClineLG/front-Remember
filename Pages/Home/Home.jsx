@@ -4,7 +4,7 @@ import "./home.css";
 import picture from "../../src/assets/imgs/remember.jpg";
 const Home = () => {
   return (
-    <div className=" home">
+    <div className="sec home">
       <h2>Ne laissez rien échapper à votre mémoire </h2>
       <div className="hero container">
         <div className="left-hero">

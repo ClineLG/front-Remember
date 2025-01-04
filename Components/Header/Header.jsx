@@ -2,7 +2,7 @@ import { GiBrain } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import "./header.css";
 
-const Header = ({ user, logout }) => {
+const Header = ({ user }) => {
   const navigate = useNavigate();
   console.log(user);
   return (

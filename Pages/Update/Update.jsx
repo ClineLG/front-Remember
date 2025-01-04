@@ -36,7 +36,7 @@ const Update = ({ user, login }) => {
     event.preventDefault();
     const { username, email, password, confirmPassword, avatar } = userDetails;
     if (!username && !email && !password && !confirmPassword && !avatar) {
-      setErrorMessage("Veuillez aporter des changements");
+      setErrorMessage("Veuillez apporter des changements");
     } else if (password && password !== confirmPassword) {
       setErrorMessage("Les mots de passe ne correspondent pas");
     } else {
@@ -56,8 +56,7 @@ const Update = ({ user, login }) => {
       setIsLoading(true);
       try {
         const response = await axios.put(
-          //   "https://site--backend-remember--dm4qbjsg7dww.code.run/user/signup",
-          "http://localhost:3002/user/update",
+          "https://site--backend-remember--dm4qbjsg7dww.code.run/user/update",
           formData,
 
           {

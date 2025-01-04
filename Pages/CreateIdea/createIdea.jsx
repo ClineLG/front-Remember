@@ -44,7 +44,7 @@ const CreateIdea = () => {
       setIsLoading(true);
       try {
         const response = await axios.put(
-          "http://localhost:3002/user/addThink",
+          "https://site--backend-remember--dm4qbjsg7dww.code.run/user/addThink",
           formData,
 
           {
@@ -68,7 +68,7 @@ const CreateIdea = () => {
   };
 
   return (
-    <section className="create">
+    <section className="create sec">
       <div className="container">
         <form
           onSubmit={(event) => {
@@ -106,7 +106,7 @@ const CreateIdea = () => {
             />
           </div>
           <label htmlFor="img" className="img-create">
-            <div>
+            <div className="notu">
               Ajouter une image <GrDocumentUpload />
             </div>
             {imageUpload && (

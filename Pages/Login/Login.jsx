@@ -13,9 +13,7 @@ const Login = ({ login }) => {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        // "https://site--backend-remember--dm4qbjsg7dww.code.run/user/login",
-
-        "http://localhost:3002/user/login",
+        "https://site--backend-remember--dm4qbjsg7dww.code.run/user/login",
         userDetails
       );
       setIsLoading(false);
@@ -26,7 +24,7 @@ const Login = ({ login }) => {
     }
   };
   return (
-    <section className="signup">
+    <section className="signup sec">
       <div className="container">
         <form
           onSubmit={(event) => {

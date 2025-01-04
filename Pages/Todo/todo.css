@@ -1,9 +1,45 @@
 .tasks {
-  margin-bottom: 100px;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.taskToShow {
+  width: 80%;
+  margin: 0 auto;
+  position: sticky;
+  top: 120px;
+  border-radius: 20px;
+  background-color: #7260d8da;
+  border: solid 2px #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+}
+.taskToShow div {
+  display: flex;
+  padding: 10px;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.taskToShow p {
+  color: white;
+}
+.taskP {
+}
+.taskToShow .close {
+  color: white;
+  font-size: 20px;
+}
+.close:hover {
+  cursor: pointer;
 }
 .tasks form {
   width: 50%;
-  margin: 20px auto;
+  margin: 0px auto;
   background-color: #f8f8f8;
   flex: 1;
   display: flex;
@@ -30,9 +66,11 @@
 .row {
   display: flex;
 }
-
+.tasks .row {
+  justify-content: space-between;
+}
 .row .submit {
-  flex: 1;
+  width: 60%;
   border-radius: 55px;
   border: none;
   margin-left: 40px;
@@ -55,7 +93,6 @@
   padding: 20px;
   width: fit-content;
   /* margin: 0 auto; */
-  margin-bottom: 20px;
   margin-left: 40px;
   color: gray;
 }
@@ -87,4 +124,47 @@
   flex: 1;
   padding: 20px;
   border-radius: 10px;
+}
+
+@media (max-width: 1270px) {
+  .tasks form {
+    width: 80%;
+  }
+  .tasks {
+    padding: 40px 20px;
+  }
+}
+@media (max-width: 1100px) {
+  .row .submit {
+    font-size: 14px;
+  }
+  .toDo {
+    flex-direction: column-reverse;
+  }
+}
+.taskCounter {
+  margin: 0 auto;
+}
+@media (max-width: 500px) {
+  .tasks label {
+    font-size: 12px;
+  }
+  .tasks .top.row .cB-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .tasks .top.row {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .tasks .top.row .submit {
+    margin: 0 auto;
+    padding: 10px 20px;
+  }
+  .toDo h1 {
+    font-size: 15px;
+  }
 }

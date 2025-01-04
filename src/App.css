@@ -7,11 +7,17 @@
   margin: 0 auto;
   width: 1200px;
 }
+
+#root {
+  min-height: 100vh;
+  padding-bottom: 70px;
+  position: relative;
+}
+
 body,
 * {
   font-family: "Fira Sans";
 }
-
 h1 {
   font-size: 40px;
   font-weight: 700;
@@ -23,4 +29,10 @@ h2 {
   color: gray;
   text-align: center;
   padding-top: 50px;
+}
+
+@media (max-width: 1220px) {
+  .container {
+    width: 100%;
+  }
 }

@@ -12,3 +12,16 @@
 .signup.update form {
   padding-bottom: 40px;
 }
+@media (max-width: 550px) {
+  .signup.update h1 {
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+  }
+  .labelAvatar {
+    width: 80%;
+  }
+  .update button {
+    padding: 5px 10px;
+  }
+}
