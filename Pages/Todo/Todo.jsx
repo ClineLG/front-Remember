@@ -108,7 +108,7 @@ const Todo = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/user/allTasks",
+          "https://site--backend-remember--dm4qbjsg7dww.code.run/user/allTasks",
           {
             headers: {
               Authorization: "Bearer " + userToken,
@@ -201,7 +201,7 @@ const Todo = () => {
       {counterDone !== 0 && (
         <p className="taskCounter">Au total : {counterDone} tâches réalisées</p>
       )}
-      {stickyTask && (
+      {stickyTask.task ? (
         <div className="taskToShow">
           <IoMdClose
             className="close"
@@ -214,6 +214,8 @@ const Todo = () => {
             <p className="taskP"> - {stickyTask.task}</p>
           </div>
         </div>
+      ) : (
+        ""
       )}
       <div className="container toDo">
         <div className="pro">
