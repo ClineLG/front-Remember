@@ -36,6 +36,8 @@ const CreateIdea = () => {
       setErrorMessage(
         "Vous n'avez pas saisi de texte et vous n'avez pas téléchargé d'image"
       );
+    } else if (!title) {
+      setErrorMessage("Vous devez écrire un titre !");
     } else {
       const formData = new FormData();
       formData.append("think", think);
@@ -126,6 +128,11 @@ const CreateIdea = () => {
               handleNewFile(event);
             }}
           />
+          {isLoading && (
+            <div className="little-loader-container">
+              <div className="loader"></div>
+            </div>
+          )}
           {errorMessage && <p className="error">{errorMessage}</p>}
           <button disabled={isLoading ? true : false} className="submit-button">
             Enregistrer !

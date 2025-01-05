@@ -5,9 +5,8 @@
 }
 
 .hero.container {
-  margin-top: 25px;
   background-color: #f8f8f8;
-  margin-top: 50px;
+  margin: 50px auto;
   display: flex;
   justify-content: space-between;
   padding: 20px;

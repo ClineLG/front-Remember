@@ -1,5 +1,6 @@
 import { GiBrain } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
+import userDefault from "../../src/assets/imgs/user.png";
 import "./header.css";
 
 const Header = ({ user }) => {
@@ -28,7 +29,11 @@ const Header = ({ user }) => {
                 navigate("/account");
               }}
             >
-              {user.avatar && <img src={user.avatar.secure_url} alt="" />}
+              {user.avatar ? (
+                <img src={user.avatar.secure_url} alt="avatar" />
+              ) : (
+                <img src={userDefault} alt="avatar" />
+              )}
               <span>{user.username}</span>
             </div>
           </>

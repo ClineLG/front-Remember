@@ -146,8 +146,14 @@ const Signup = ({ login }) => {
             }}
             value={userDetails.confirmPassword}
           />
+          {isLoading && (
+            <div className="little-loader-container">
+              <div className="loader"></div>
+            </div>
+          )}
           {errorMessage && <p className="error">{errorMessage}</p>}
           <button disabled={isLoading ? true : false}>S'inscrire</button>
+
           <Link to="/login">Déjà inscrit ? Se connecter</Link>
         </form>
       </div>
