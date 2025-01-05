@@ -22,9 +22,11 @@ const Ideas = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3002/user/allThoughts/?page=${query.page}${
-            query.search && "&search=" + query.search
-          }${query.date && "&date=" + query.date}`,
+          `https://site--backend-remember--dm4qbjsg7dww.code.run/user/allThoughts/?page=${
+            query.page
+          }${query.search && "&search=" + query.search}${
+            query.date && "&date=" + query.date
+          }`,
           {
             headers: {
               Authorization: "Bearer " + userToken,
