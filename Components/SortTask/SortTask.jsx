@@ -1,6 +1,8 @@
 import { FaTrashAlt } from "react-icons/fa";
 import { FaHotjar } from "react-icons/fa";
 import "./sort-task.css";
+import { FaCheck } from "react-icons/fa";
+
 const SortTask = ({ data, handleDone, handleDelete, setStickyTask }) => {
   const shorter = (str, num) => {
     let newStr = "";
@@ -17,7 +19,9 @@ const SortTask = ({ data, handleDone, handleDelete, setStickyTask }) => {
         <div
           className={task.done ? `checkbox activ` : "checkbox"}
           onClick={() => handleDone(task._id)}
-        ></div>
+        >
+          <FaCheck className={task.done ? "checkTask activ" : "checkTask"} />
+        </div>
         <div className={task.done ? "row activ-p" : "row"}>
           {task.emergency ? (
             <FaHotjar className="hot" />

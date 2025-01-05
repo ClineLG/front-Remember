@@ -2,6 +2,7 @@ import "./update.css";
 import axios from "axios";
 import { useState } from "react";
 import { GrDocumentUpload } from "react-icons/gr";
+import userDefault from "../../src/assets/imgs/user.png";
 
 const Update = ({ user, login }) => {
   //   console.log("token", user.token);
@@ -124,9 +125,15 @@ const Update = ({ user, login }) => {
                 alt="picture upload preview"
                 className="avatarPreview"
               />
-            ) : (
+            ) : user.avatar ? (
               <img
                 src={user.avatar.secure_url}
+                alt="avatar preview"
+                className="avatarPreview opacity"
+              />
+            ) : (
+              <img
+                src={userDefault}
                 alt="avatar preview"
                 className="avatarPreview opacity"
               />
@@ -167,6 +174,11 @@ const Update = ({ user, login }) => {
             }}
             value={userDetails.confirmPassword}
           />
+          {isLoading && (
+            <div className="little-loader-container">
+              <div className="loader"></div>
+            </div>
+          )}
           {errorMessage && <p className="error">{errorMessage}</p>}
           <button disabled={isLoading ? true : false}>Mettre à jour</button>
         </form>

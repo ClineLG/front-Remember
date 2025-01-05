@@ -32,7 +32,6 @@ const Login = ({ login }) => {
           }}
         >
           <h1>Connection</h1>
-
           <input
             type="email"
             name="email"
@@ -57,6 +56,11 @@ const Login = ({ login }) => {
             }}
             value={userDetails.password}
           />
+          {isLoading && (
+            <div className="little-loader-container">
+              <div className="loader"></div>
+            </div>
+          )}
           {errorMessage && <p className="error">{errorMessage}</p>}
           <button disabled={isLoading ? true : false}>Se connecter</button>
           <Link to="/signup">Pas encore inscrit ? Se créer un compte</Link>

@@ -14,7 +14,7 @@
   border-radius: 20px;
 }
 
-.create form div {
+.create form div:not(.loader, .little-loader-container) {
   display: flex;
   justify-content: space-between;
   width: 100%;

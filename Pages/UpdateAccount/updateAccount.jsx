@@ -1,6 +1,8 @@
 import "./update-account.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import userDefault from "../../src/assets/imgs/user.png";
+
 const UpdateAccount = ({ user, logout }) => {
   const navigate = useNavigate();
 
@@ -34,7 +36,11 @@ const UpdateAccount = ({ user, logout }) => {
           </div>
           <div className="updateA-div pad">
             <span>Avatar :</span>
-            {user.avatar && <img src={user.avatar.secure_url} />}
+            {user.avatar ? (
+              <img src={user.avatar.secure_url} />
+            ) : (
+              <img src={userDefault} />
+            )}
           </div>
           <button
             onClick={() => {

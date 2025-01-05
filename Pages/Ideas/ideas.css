@@ -44,14 +44,29 @@ a.newIdea {
   text-align: center;
   margin-bottom: 40px;
 }
-
-.allIdeas form {
+.divForm {
   background-color: #f8f8f8;
-  padding: 20px;
-  display: flex;
-  /* justify-content: space-between; */
   border-radius: 20px;
   margin-bottom: 40px;
+}
+
+.divForm .title {
+  text-align: center;
+  line-height: 30px;
+  margin-bottom: 20px;
+  color: #646467;
+  font-weight: 500;
+  font-size: 20px;
+  padding: 20px;
+  border-bottom: solid 3px white;
+}
+
+.allIdeas form {
+  padding: 20px;
+
+  display: flex;
+  justify-content: center;
+
   align-items: center;
   gap: 30px;
 }
@@ -99,6 +114,16 @@ a.newIdea {
 .submit-button.bis {
   width: 220px;
 }
+
+.idea-counter {
+  background-color: #7260d8;
+  width: fit-content;
+  padding: 20px;
+  border-radius: 10px;
+  color: white;
+  margin-bottom: 40px;
+}
+
 .idea {
   width: 60%;
   background-color: #f8f8f8;
@@ -136,6 +161,21 @@ a.newIdea {
   align-self: center;
   object-fit: cover;
   border-radius: 10px;
+}
+
+.page {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+  color: gray;
+}
+.page select {
+  border: none;
+  cursor: pointer;
+  color: gray;
+}
+.page select:focus {
+  outline: none;
 }
 
 @media (max-width: 1270px) {

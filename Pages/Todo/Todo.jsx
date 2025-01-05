@@ -17,6 +17,7 @@ const Todo = () => {
   const [counterDone, setCounterDone] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [stickyTask, setStickyTask] = useState({ date: "", task: "" });
+  const [taskIsLoading, setTaskisloading] = useState(false);
   const userToken = Cookies.get("token");
 
   const handleSubmit = async (event) => {
@@ -37,23 +38,30 @@ const Todo = () => {
       proToSend = pro;
     }
 
-    const response = await axios.put(
-      `https://site--backend-remember--dm4qbjsg7dww.code.run/user/addTask`,
-      {
-        task: task,
-        pro: proToSend,
-        perso: persoToSend,
-        emergency: emergency,
-      },
-      {
-        headers: {
-          Authorization: "Bearer " + userToken,
+    try {
+      setTaskisloading(true);
+
+      const response = await axios.put(
+        `https://site--backend-remember--dm4qbjsg7dww.code.run/user/addTask`,
+        {
+          task: task,
+          pro: proToSend,
+          perso: persoToSend,
+          emergency: emergency,
         },
-      }
-    );
-    setSubmit(!submit);
-    setTask("");
-    console.log(response.data);
+        {
+          headers: {
+            Authorization: "Bearer " + userToken,
+          },
+        }
+      );
+      setSubmit(!submit);
+      setTask("");
+      setTaskisloading(false);
+    } catch (error) {
+      console.log(error);
+      setTaskisloading(false);
+    }
   };
   const handleDone = async (taskId) => {
     try {
@@ -140,7 +148,9 @@ const Todo = () => {
   }, [submit]);
 
   return isLoading ? (
-    <div>isLoading</div>
+    <div className="loader-container">
+      <div className="loader"></div>
+    </div>
   ) : (
     <section className="tasks sec">
       <div className="container">
@@ -193,8 +203,15 @@ const Todo = () => {
               </div>
             </div>
 
-            <button className="submit">Ajouter !</button>
+            <button className="submit" disabled={taskIsLoading ? true : false}>
+              Ajouter !
+            </button>
           </div>
+          {taskIsLoading && (
+            <div className="little-loader-container">
+              <div className="loader"></div>
+            </div>
+          )}
           {errorMessage && <p className="error">{errorMessage}</p>}
         </form>
       </div>
